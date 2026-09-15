@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#4f5bc4">
+  <title>N1 Japanese | 学習ダッシュボード</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <div class="logo-mark">N1</div>
+        <div>
+          <strong>JAPANESE</strong>
+          <span>Study App</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <p class="nav-label">MENU</p>
+        <a href="#" class="nav-item active" data-section="dashboard">
+          <span>⌂</span> Dashboard
+        </a>
+        <a href="#" class="nav-item" data-section="vocabulary">
+         語彙
+        </a>
+        <a href="#" class="nav-item" data-section="grammar">
+           文法
+        </a>
+        <a href="#" class="nav-item" data-section="kanji">
+          漢字
+        </a>
+        <a href="#" class="nav-item" data-section="reading">
+           読解
+        </a>
+        <a href="#" class="nav-item" data-section="listening">
+           聴解
+        </a>
+
+        <p class="nav-label exam-label">PRACTICE</p>
+        <a href="#" class="nav-item" data-section="mock">
+          <span>✓</span> 模擬試験
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+       
+        <a
+         href="./tailieu.pdf"
+  target="_blank"
+  class="pdf-link"
+>
+  📖 file pdf
+</a>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="menu-btn" id="menuBtn" aria-label="メニュー">☰</button>
+        <div class="breadcrumb">学習 / <strong id="pageTitle">Dashboard</strong></div>
+        <div class="top-actions">
+          <button class="icon-btn" aria-label="通知">♧</button>
+          <div class="avatar">T</div>
+        </div>
+      </header>
+
+      <section class="content" id="dashboardSection">
+        <div class="hero">
+          <div>
+            <p class="eyebrow">JLPT N1 STUDY</p>
+            <h1>おはようございます！ <span>👋</span></h1>
+            <p>今日もN1の勉強を頑張りましょう。</p>
+          </div>
+          <div class="hero-badge">
+            <span>🔥</span>
+            <div><strong id="streakHero">12</strong><small>日連続</small></div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon blue">↗</div>
+            <div><span>総合進捗</span><strong id="progressText">68%</strong></div>
+            <div class="mini-progress"><i id="miniProgress"></i></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon green">✓</div>
+            <div><span>今日の学習</span><strong id="todayCount">32 / 50</strong></div>
+            <small>問題を回答</small>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon orange">★</div>
+            <div><span>平均正解率</span><strong>84%</strong></div>
+            <small>先週より +6%</small>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon purple">◷</div>
+            <div><span>学習時間</span><strong>24.5h</strong></div>
+            <small>今月</small>
+          </div>
+        </div>
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">TODAY</p>
+            <h2>今日の学習</h2>
+          </div>
+          <button class="text-btn" id="resetBtn">進捗をリセット ↻</button>
+        </div>
+
+        <div class="lesson-grid">
+          <article class="lesson-card">
+            <div class="lesson-top"><div class="lesson-icon">文</div><span class="pill">1126 từ</span></div>
+            <h3>語彙</h3>
+            <p>PDF N1 được chia thành nhiều bài nhỏ để học từng phần.</p>
+            <button class="start-btn" data-start="語彙">学習を始める <span>→</span></button>
+          </article>
+
+          <article class="lesson-card">
+            <div class="lesson-top"><div class="lesson-icon">文</div><span class="pill">10問</span></div>
+            <h3>文法</h3>
+            <p>よく出るN1文法を確認しましょう。</p>
+            <button class="start-btn" data-start="文法">学習を始める <span>→</span></button>
+          </article>
+
+          <article class="lesson-card">
+            <div class="lesson-top"><div class="lesson-icon">漢</div><span class="pill">15問</span></div>
+            <h3>漢字</h3>
+            <p>N1で必要な漢字を練習しましょう。</p>
+            <button class="start-btn" data-start="漢字">学習を始める <span>→</span></button>
+          </article>
+        </div>
+
+        <div class="bottom-grid">
+          <section class="panel">
+            <div class="panel-heading">
+              <div><p class="eyebrow">PROGRESS</p><h2>学習進捗</h2></div>
+              <span class="total-badge">N1</span>
+            </div>
+            <div class="progress-row"><span>語彙</span><div class="bar"><i style="width:76%"></i></div><strong>76%</strong></div>
+            <div class="progress-row"><span>文法</span><div class="bar"><i style="width:64%"></i></div><strong>64%</strong></div>
+            <div class="progress-row"><span>漢字</span><div class="bar"><i style="width:58%"></i></div><strong>58%</strong></div>
+            <div class="progress-row"><span>読解</span><div class="bar"><i style="width:71%"></i></div><strong>71%</strong></div>
+            <div class="progress-row"><span>聴解</span><div class="bar"><i style="width:45%"></i></div><strong>45%</strong></div>
+          </section>
+
+          <section class="panel tip-panel">
+            <div class="tip-icon">💡</div>
+            <p class="eyebrow">TODAY'S TIP</p>
+            <h2>毎日少しずつ続けよう。</h2>
+            <p>10分でも毎日続けることが、N1合格への近道です。</p>
+            <button class="outline-btn" id="tipBtn">今日のヒントを見る</button>
+          </section>
+        </div>
+      </section>
+
+
+      <section class="vocabulary-section" id="vocabularySection" hidden>
+        <div class="page-intro">
+          <div>
+            <p class="eyebrow">VOCABULARY · PDF N1</p>
+            <h1 id="vocabPageHeading">Từ vựng N1</h1>
+            <p>Chia thành nhiều bài nhỏ. Mỗi bài có tối đa 25 từ từ tài liệu DUNGMORI.</p>
+          </div>
+          <div class="word-count">
+            <strong>1126</strong>
+            <span>từ trong PDF</span>
+          </div>
+        </div>
+
+        <section id="lessonListView">
+          <div class="lesson-list-heading">
+            <div><p class="eyebrow">LESSONS</p><h2>Chọn bài học</h2></div>
+            <span class="total-badge">46 bài</span>
+          </div>
+          <div class="vocab-lesson-grid">
+          <article class="vocab-lesson-card" data-lesson="1">
+            <div class="vocab-lesson-number">01</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 01</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 20 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-1"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-1">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="1">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="2">
+            <div class="vocab-lesson-number">02</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 02</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 20 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-2"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-2">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="2">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="3">
+            <div class="vocab-lesson-number">03</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 03</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 20–21 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-3"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-3">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="3">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="4">
+            <div class="vocab-lesson-number">04</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 04</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 21 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-4"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-4">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="4">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="5">
+            <div class="vocab-lesson-number">05</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 05</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 21–22 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-5"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-5">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="5">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="6">
+            <div class="vocab-lesson-number">06</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 06</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 22 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-6"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-6">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="6">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="7">
+            <div class="vocab-lesson-number">07</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 07</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 22–23 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-7"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-7">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="7">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="8">
+            <div class="vocab-lesson-number">08</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 08</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 23 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-8"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-8">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="8">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="9">
+            <div class="vocab-lesson-number">09</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 09</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 23–24 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-9"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-9">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="9">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="10">
+            <div class="vocab-lesson-number">10</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 10</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 24 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-10"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-10">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="10">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="11">
+            <div class="vocab-lesson-number">11</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 11</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 24–25 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-11"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-11">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="11">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="12">
+            <div class="vocab-lesson-number">12</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 12</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 25 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-12"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-12">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="12">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="13">
+            <div class="vocab-lesson-number">13</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 13</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 25–26 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-13"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-13">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="13">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="14">
+            <div class="vocab-lesson-number">14</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 14</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 26 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-14"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-14">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="14">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="15">
+            <div class="vocab-lesson-number">15</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 15</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 26–27 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-15"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-15">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="15">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="16">
+            <div class="vocab-lesson-number">16</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 16</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 27 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-16"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-16">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="16">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="17">
+            <div class="vocab-lesson-number">17</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 17</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 27–28 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-17"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-17">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="17">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="18">
+            <div class="vocab-lesson-number">18</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 18</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 28 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-18"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-18">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="18">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="19">
+            <div class="vocab-lesson-number">19</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 19</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 28–29 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-19"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-19">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="19">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="20">
+            <div class="vocab-lesson-number">20</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 20</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 29 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-20"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-20">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="20">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="21">
+            <div class="vocab-lesson-number">21</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 21</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 29–30 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-21"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-21">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="21">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="22">
+            <div class="vocab-lesson-number">22</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 22</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 30 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-22"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-22">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="22">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="23">
+            <div class="vocab-lesson-number">23</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 23</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 30–31 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-23"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-23">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="23">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="24">
+            <div class="vocab-lesson-number">24</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 24</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 31 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-24"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-24">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="24">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="25">
+            <div class="vocab-lesson-number">25</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 25</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 31–32 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-25"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-25">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="25">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="26">
+            <div class="vocab-lesson-number">26</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 26</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 32 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-26"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-26">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="26">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="27">
+            <div class="vocab-lesson-number">27</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 27</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 32–33 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-27"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-27">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="27">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="28">
+            <div class="vocab-lesson-number">28</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 28</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 33 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-28"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-28">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="28">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="29">
+            <div class="vocab-lesson-number">29</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 29</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 33–34 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-29"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-29">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="29">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="30">
+            <div class="vocab-lesson-number">30</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 30</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 34 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-30"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-30">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="30">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="31">
+            <div class="vocab-lesson-number">31</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 31</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 34–35 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-31"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-31">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="31">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="32">
+            <div class="vocab-lesson-number">32</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 32</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 35 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-32"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-32">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="32">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="33">
+            <div class="vocab-lesson-number">33</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 33</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 35–36 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-33"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-33">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="33">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="34">
+            <div class="vocab-lesson-number">34</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 34</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 36 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-34"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-34">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="34">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="35">
+            <div class="vocab-lesson-number">35</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 35</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 36 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-35"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-35">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="35">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="36">
+            <div class="vocab-lesson-number">36</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 36</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 36–37 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-36"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-36">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="36">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="37">
+            <div class="vocab-lesson-number">37</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 37</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 37 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-37"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-37">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="37">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="38">
+            <div class="vocab-lesson-number">38</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 38</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 38 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-38"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-38">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="38">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="39">
+            <div class="vocab-lesson-number">39</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 39</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 38 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-39"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-39">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="39">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="40">
+            <div class="vocab-lesson-number">40</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 40</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 38–39 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-40"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-40">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="40">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="41">
+            <div class="vocab-lesson-number">41</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 41</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 39 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-41"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-41">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="41">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="42">
+            <div class="vocab-lesson-number">42</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 42</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 39–40 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-42"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-42">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="42">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="43">
+            <div class="vocab-lesson-number">43</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 43</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 40 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-43"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-43">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="43">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="44">
+            <div class="vocab-lesson-number">44</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 44</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 40–41 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-44"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-44">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="44">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="45">
+            <div class="vocab-lesson-number">45</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 45</span><span class="pill">25 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 41–42 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-45"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-45">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="45">Bắt đầu <span>→</span></button>
+          </article>
+          <article class="vocab-lesson-card" data-lesson="46">
+            <div class="vocab-lesson-number">46</div>
+            <div class="vocab-lesson-main">
+              <div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 46</span><span class="pill">1 từ</span></div>
+              <h3>語彙</h3>
+              <p>PDF trang 42 · Học nghĩa tiếng Việt rồi nhập từ tiếng Nhật.</p>
+              <div class="lesson-progress"><i id="lessonBar-46"></i></div>
+              <div class="lesson-progress-text" id="lessonProgress-46">Chưa học</div>
+            </div>
+            <button class="start-btn lesson-open-btn" data-lesson="46">Bắt đầu <span>→</span></button>
+          </article>
+          </div>
+        </section>
+
+        <section class="panel quiz-panel lesson-quiz-view" id="lessonQuizView" hidden>
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow" id="lessonQuizEyebrow">BÀI 01 · PDF N1 VOCABULARY</p>
+              <h2>日本語を入力してください</h2>
+            </div>
+            <button class="outline-btn back-lessons-btn" id="backLessonsBtn" type="button">← Danh sách bài</button>
+          </div>
+
+          <div class="quiz-progress">
+            <div><span id="quizProgressText">1 / 25</span><span id="quizScoreText">正解 0</span></div>
+            <div class="bar"><i id="quizProgressBar"></i></div>
+          </div>
+
+          <div class="question-card">
+            <small>NGHĨA TIẾNG VIỆT</small>
+            <strong id="questionMeaning">Đang tải dữ liệu...</strong>
+            <span>Hãy nhập từ tiếng Nhật tương ứng</span>
+          </div>
+
+          <form id="answerForm" class="answer-form">
+            <input id="answerInput" type="text" autocomplete="off" placeholder="例：懸念" aria-label="Câu trả lời tiếng Nhật">
+            <button class="check-btn" type="submit">Kiểm tra ✓</button>
+          </form>
+
+          <div class="answer-result" id="answerResult" aria-live="polite"></div>
+
+          <div class="quiz-actions">
+            <button class="outline-btn" id="showAnswerBtn" type="button">Xem đáp án</button>
+            <button class="outline-btn" id="nextQuestionBtn" type="button">Câu tiếp theo →</button>
+          </div>
+
+          <div class="quiz-info">
+            <span>📚 Dữ liệu: <strong>DUNGMORI Tổng hợp N1 (Ebook)</strong></span>
+            <span>💾 Tiến độ từng bài được lưu trên trình duyệt</span>
+          </div>
+        </section>
+      </section>
+
+<section class="vocabulary-section" id="kanjiSection" hidden>
+  <div class="page-intro">
+    <div>
+      <p class="eyebrow">KANJI</p>
+      <h1>漢字を学習する</h1>
+      <p>Học Kanji trực tiếp từ phần 漢字 của PDF DUNGMORI N1.</p>
+    </div><div class="word-count">
+      <strong id="kanjiCount">258</strong>
+      <span>漢字</span></div>
+    </div>
+    <div id="kanjiListView">
+      <div class="lesson-grid lesson-grid-many"><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="1">
+        <div class="vocab-lesson-number">1</div>
+        <div class="vocab-lesson-main">
+          <div class="vocab-lesson-top">
+            <span class="vocab-lesson-label">Bài 01</span>
+            <span class="pill">15 chữ</span>
+          </div>
+          <h3>漢字</h3>
+          <p>Kanji từ PDF N1 · 15 chữ/bài.</p>
+          <div class="lesson-progress">
+            <i id="kanjiBar-1">
+            </i></div>
+            <div class="lesson-progress-text" id="kanjiProgress-1">Chưa học</div>
+          </div>
+          <button class="start-btn" type="button"><span>→</span></button></article>
+          <article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="2">
+            <div class="vocab-lesson-number">2</div><div class="vocab-lesson-main">
+              <div class="vocab-lesson-top">
+                <span class="vocab-lesson-label">Bài 02</span><span class="pill">15 chữ</span>
+              </div><h3>漢字</h3>
+              <p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-2"></i></div><div class="lesson-progress-text" id="kanjiProgress-2">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="3"><div class="vocab-lesson-number">3</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 03</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-3"></i></div><div class="lesson-progress-text" id="kanjiProgress-3">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="4"><div class="vocab-lesson-number">4</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 04</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-4"></i></div><div class="lesson-progress-text" id="kanjiProgress-4">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="5"><div class="vocab-lesson-number">5</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 05</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-5"></i></div><div class="lesson-progress-text" id="kanjiProgress-5">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="6"><div class="vocab-lesson-number">6</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 06</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-6"></i></div><div class="lesson-progress-text" id="kanjiProgress-6">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="7"><div class="vocab-lesson-number">7</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 07</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-7"></i></div><div class="lesson-progress-text" id="kanjiProgress-7">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="8"><div class="vocab-lesson-number">8</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 08</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-8"></i></div><div class="lesson-progress-text" id="kanjiProgress-8">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="9"><div class="vocab-lesson-number">9</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 09</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-9"></i></div><div class="lesson-progress-text" id="kanjiProgress-9">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="10"><div class="vocab-lesson-number">10</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 10</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-10"></i></div><div class="lesson-progress-text" id="kanjiProgress-10">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="11"><div class="vocab-lesson-number">11</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 11</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-11"></i></div><div class="lesson-progress-text" id="kanjiProgress-11">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="12"><div class="vocab-lesson-number">12</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 12</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-12"></i></div><div class="lesson-progress-text" id="kanjiProgress-12">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="13"><div class="vocab-lesson-number">13</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 13</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-13"></i></div><div class="lesson-progress-text" id="kanjiProgress-13">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="14"><div class="vocab-lesson-number">14</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 14</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-14"></i></div><div class="lesson-progress-text" id="kanjiProgress-14">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="15"><div class="vocab-lesson-number">15</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 15</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-15"></i></div><div class="lesson-progress-text" id="kanjiProgress-15">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="16"><div class="vocab-lesson-number">16</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 16</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-16"></i></div><div class="lesson-progress-text" id="kanjiProgress-16">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="17"><div class="vocab-lesson-number">17</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 17</span><span class="pill">15 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-17"></i></div><div class="lesson-progress-text" id="kanjiProgress-17">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article><article class="vocab-lesson-card kanji-lesson-card" data-kanji-lesson="18"><div class="vocab-lesson-number">18</div><div class="vocab-lesson-main"><div class="vocab-lesson-top"><span class="vocab-lesson-label">Bài 18</span><span class="pill">3 chữ</span></div><h3>漢字</h3><p>Kanji từ PDF N1 · 15 chữ/bài.</p><div class="lesson-progress"><i id="kanjiBar-18"></i></div><div class="lesson-progress-text" id="kanjiProgress-18">Chưa học</div></div><button class="start-btn" type="button"><span>→</span></button></article></div></div><section class="panel quiz-panel lesson-quiz-view" id="kanjiQuizView" hidden><div class="panel-heading"><div><p class="eyebrow" id="kanjiQuizEyebrow">BÀI 01 · PDF N1 KANJI</p><h2>漢字を入力してください</h2></div><button class="outline-btn" id="backKanjiLessonsBtn" type="button">← Danh sách bài</button></div><div class="quiz-progress"><div><span id="kanjiQuizProgressText">1 / 15</span><span id="kanjiQuizScoreText">正解 0</span></div><div class="bar"><i id="kanjiQuizProgressBar"></i></div></div><div class="question-card kanji-question"><small>NGHĨA TIẾNG VIỆT</small><strong id="kanjiMeaning">Đang tải...</strong><span id="kanjiGloss">Đang tải...</span></div><form id="kanjiAnswerForm" class="answer-form"><input id="kanjiAnswerInput" type="text" autocomplete="off" placeholder="例：俊"><button class="check-btn" type="submit">Kiểm tra ✓</button></form><div class="answer-result" id="kanjiAnswerResult"></div><div class="quiz-actions"><button class="outline-btn" id="kanjiShowAnswerBtn" type="button">Xem đáp án</button><button class="outline-btn" id="kanjiNextBtn" type="button">Câu tiếp theo →</button></div></section></section>
+
+      <section class="placeholder-section" id="placeholderSection" hidden>
+        <div class="placeholder-card">
+          <div class="placeholder-icon" id="placeholderIcon">文</div>
+          <p class="eyebrow">COMING NEXT</p>
+          <h1 id="placeholderTitle">語彙</h1>
+          <p id="placeholderText">このページはこれから作っていきます。</p>
+          <button class="start-btn" id="backDashboard">← Dashboardに戻る</button>
+        </div>
+      </section>
+
+      <footer>© 2026 N1 Japanese Study App</footer>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
